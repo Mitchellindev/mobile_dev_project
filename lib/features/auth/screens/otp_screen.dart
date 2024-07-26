@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile_dev_project/config/router/routes.dart';
 import 'package:mobile_dev_project/core/constants/app_colors.dart';
 import 'package:mobile_dev_project/features/auth/widgets/button_widget.dart';
-import 'package:mobile_dev_project/features/auth/widgets/otp_text_field_widget.dart';
-import 'package:mobile_dev_project/features/auth/widgets/text_field_widget.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
@@ -37,23 +38,19 @@ class OtpScreen extends StatelessWidget {
               ),
               SizedBox(height: 32.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  OtpTextFieldWidget(
-                    controller: TextEditingController(),
-                    obscureText: false,
-                  ),
-                  OtpTextFieldWidget(
-                    controller: TextEditingController(),
-                    obscureText: false,
-                  ),
-                  OtpTextFieldWidget(
-                    controller: TextEditingController(),
-                    obscureText: false,
-                  ),
-                  OtpTextFieldWidget(
-                    controller: TextEditingController(),
-                    obscureText: false,
+                  Expanded(
+                    child: OTPTextField(
+                      outlineBorderRadius: 4,
+                      length: 4,
+                      spaceBetween: 10.w,
+                      fieldWidth: 75.w,
+                      style: const TextStyle(fontSize: 17),
+                      textFieldAlignment: MainAxisAlignment.spaceBetween,
+                      fieldStyle: FieldStyle.box,
+                      onCompleted: (pin) {},
+                    ),
                   ),
                 ],
               ),
@@ -85,7 +82,9 @@ class OtpScreen extends StatelessWidget {
               MyButton(
                 label: 'Continue',
                 backgroundColor: AppColors.primary,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.resetPassword);
+                },
                 textColor: AppColors.white,
                 borderColor: AppColors.primary,
               ),

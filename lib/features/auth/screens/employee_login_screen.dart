@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_dev_project/config/router/routes.dart';
 import 'package:mobile_dev_project/core/constants/app_colors.dart';
